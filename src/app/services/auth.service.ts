@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
-import { environment } from '../../environments/environment'; // Import environment
+import { environment } from '../../environments/environment';
 
 // Define the token response interface
 interface TokenResponse {
@@ -26,8 +26,8 @@ interface SpotifyUserProfile {
   providedIn: 'root',
 })
 export class AuthService {
-  private clientId = environment.spotifyClientId; // Use environment variable
-  private redirectUri = environment.redirectUri; // Use environment variable
+  private clientId = environment.spotifyClientId;
+  private redirectUri = environment.redirectUri;
   private scopes = [
     'user-read-private',
     'user-read-email',
@@ -234,6 +234,7 @@ export class AuthService {
     this.codeVerifier = this.generateRandomString(128);
     const codeChallenge = await this.generateCodeChallenge(this.codeVerifier);
     localStorage.setItem('code_verifier', this.codeVerifier);
+    console.log('AuthService: Generated code_verifier:', this.codeVerifier); // Log the code_verifier
 
     const showDialog = !this.hasAuthorized;
     const authUrl = `https://accounts.spotify.com/authorize?client_id=${this.clientId}&response_type=code&redirect_uri=${encodeURIComponent(this.redirectUri)}&scope=${encodeURIComponent(this.scopes.join(' '))}&show_dialog=${showDialog}&code_challenge_method=S256&code_challenge=${codeChallenge}`;
@@ -241,6 +242,7 @@ export class AuthService {
     window.location.href = authUrl;
   }
 
+  // Updated handleCallback method
   async handleCallback(code: string): Promise<void> {
     if (!isPlatformBrowser(this.platformId)) {
       console.log('AuthService: Not in browser, skipping callback handling');
@@ -249,22 +251,29 @@ export class AuthService {
 
     console.log('AuthService: Handling callback with code:', code);
     this.codeVerifier = localStorage.getItem('code_verifier');
+    console.log('AuthService: Retrieved code_verifier:', this.codeVerifier); // Log the retrieved code_verifier
     if (!this.codeVerifier) {
       console.error('AuthService: No code verifier found in localStorage');
       throw new Error('Code verifier not found. Please try logging in again.');
     }
 
     try {
-      console.log('AuthService: Exchanging code for token');
+      console.log('AuthService: Exchanging code for token with params:', {
+        grant_type: 'authorization_code',
+        code,
+        redirect_uri: this.redirectUri,
+        client_id: this.clientId,
+        code_verifier: this.codeVerifier,
+      });
+      const body = new URLSearchParams({
+        grant_type: 'authorization_code',
+        code,
+        redirect_uri: this.redirectUri,
+        client_id: this.clientId,
+        code_verifier: this.codeVerifier,
+      });
       const response = await firstValueFrom(
-        this.http.post<TokenResponse>('https://accounts.spotify.com/api/token', null, {
-          params: {
-            grant_type: 'authorization_code',
-            code,
-            redirect_uri: this.redirectUri,
-            client_id: this.clientId,
-            code_verifier: this.codeVerifier,
-          },
+        this.http.post<TokenResponse>('https://accounts.spotify.com/api/token', body.toString(), {
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
           },
@@ -294,9 +303,11 @@ export class AuthService {
 
       // Clear the code verifier
       this.clearCodeVerifier();
-    } catch (error) {
+    } catch (error: any) {
       console.error('AuthService: Failed to exchange code for token:', error);
-      throw error;
+      console.error('AuthService: Error response:', error.response?.data || error.message);
+      console.error('AuthService: Error status:', error.response?.status);
+      throw new Error(error.response?.data?.error_description || error.message || 'Token exchange failed');
     }
   }
 
