@@ -1,0 +1,32 @@
+<div class="flex justify-center space-x-2 p-4">
+  <button 
+    (click)="onTimeRangeChange('short_term')" 
+    [ngClass]="{
+      'bg-blue-500 text-white': timeRange === 'short_term', 
+      'bg-gray-700 hover:bg-gray-600 text-white': isDarkMode && timeRange !== 'short_term', 
+      'bg-gray-300 hover:bg-gray-200 text-black': !isDarkMode && timeRange !== 'short_term'
+    }" 
+    class="px-5 py-3 rounded-lg transition">
+    4 weeks
+  </button>
+  <button 
+    (click)="onTimeRangeChange('medium_term')" 
+    [ngClass]="{
+      'bg-blue-500 text-white': timeRange === 'medium_term', 
+      'bg-gray-700 hover:bg-gray-600 text-white': isDarkMode && timeRange !== 'medium_term', 
+      'bg-gray-300 hover:bg-gray-200 text-black': !isDarkMode && timeRange !== 'medium_term'
+    }" 
+    class="px-5 py-3 rounded-lg transition">
+    6 months
+  </button>
+  <button 
+    (click)="onTimeRangeChange('long_term')" 
+    [ngClass]="{
+      'bg-blue-500 text-white': timeRange === 'long_term', 
+      'bg-gray-700 hover:bg-gray-600 text-white': isDarkMode && timeRange !== 'long_term', 
+      'bg-gray-300 hover:bg-gray-200 text-black': !isDarkMode && timeRange !== 'long_term'
+    }" 
+    class="px-5 py-3 rounded-lg transition">
+    all time
+  </button>
+</div>

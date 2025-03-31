@@ -1,0 +1,132 @@
+/* Custom Animations */
+@keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes shimmer {
+    0% {
+      border-image: linear-gradient(to right, #10b981, #34d399);
+    }
+    50% {
+      border-image: linear-gradient(to right, #34d399, #10b981);
+    }
+    100% {
+      border-image: linear-gradient(to right, #10b981, #34d399);
+    }
+  }
+  
+  @keyframes bounce-slow {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-10px) scale(1.1);
+    }
+  }
+  
+  @keyframes orbit-leaf {
+    0% {
+      transform: rotate(0deg) translateX(70px) rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg) translateX(70px) rotate(-360deg);
+    }
+  }
+  
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+/* Faster spin animation */
+@keyframes spin-fast {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Fade-in animation for text */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+  
+  .animate-spin-slow {
+    animation: spin-slow 2.5s linear infinite;
+  }
+  
+  .animate-shimmer {
+    animation: shimmer 2s ease-in-out infinite;
+  }
+  
+  .animate-bounce-slow {
+    animation: bounce-slow 2s ease-in-out infinite;
+  }
+  
+  .animate-orbit-leaf {
+    animation: orbit-leaf 3.5s linear infinite;
+  }
+  
+  .animate-fade-in-up {
+    animation: fade-in-up 1.2s ease-out;
+  }
+
+.animate-spin-fast {
+  animation: spin-fast 0.8s linear infinite;
+}
+
+.animate-pulse {
+  animation: pulse 1s infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-in-out;
+}
+  
+  /* Ensure smooth transitions and centering */
+  .flex {
+    display: flex;
+  }
+  
+  .items-center {
+    align-items: center;
+  }
+  
+  .justify-center {
+    justify-content: center;
+  }
+  
+  .h-full {
+    height: 100%;
+  }
+  
+  .rounded-full {
+    border-radius: 9999px;
+  }
+  
+  /* Enhance visual depth */
+  .relative {
+    position: relative;
+  }
+  
+  .absolute {
+    position: absolute;
+  }

@@ -1,0 +1,16 @@
+<div *ngIf="showSpinner" class="flex flex-col items-center justify-center h-full bg-opacity-70 backdrop-blur-lg">
+  <!-- Simplified Spinner with Pulsing Effect -->
+  <div class="relative">
+    <div class="h-24 w-24 rounded-full border-4 border-t-transparent border-blue-500 animate-spin-fast"></div>
+    <!-- Inner Glow Circle -->
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-16 w-16 rounded-full bg-blue-500 opacity-30 animate-pulse"></div>
+  </div>
+
+  <!-- Descriptive Message -->
+  <p class="mt-6 text-center text-lg font-semibold text-blue-600 animate-fade-in"
+     [ngStyle]="{
+       'color': isDarkMode ? '#60a5fa' : '#1e3a8a'
+     }">
+    Loading, please wait...
+  </p>
+</div>

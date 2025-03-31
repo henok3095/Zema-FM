@@ -1,0 +1,41 @@
+<!-- src/app/components/navbar/navbar.component.html -->
+<div class="container mx-auto max-w-screen-xl p-4 sm:p-6 md:p-8">
+  <div class="relative flex justify-between items-center p-4 rounded-xl shadow-lg border backdrop-blur-xl group overflow-hidden transition-all duration-300" [ngClass]="{'bg-gray-900/80 border-white/10': isDarkMode, 'bg-white/80 border-gray-300': !isDarkMode}">
+    <!-- Particle Effects -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="particles">
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+      </div>
+    </div>
+
+    <!-- Left Section: Logo and Name -->
+    <div class="relative flex items-center space-x-2 z-10">
+      <!-- Spinning Vinyl Record Logo -->
+      <div class="relative w-8 h-8">
+        <div class="absolute inset-0 w-8 h-8 rounded-full bg-gradient-to-r from-gray-800 to-gray-700 opacity-70 animate-spin-slow group-hover:animate-spin"></div>
+        <div class="absolute inset-1 w-6 h-6 rounded-full bg-gray-900 border border-gray-600"></div>
+      </div>
+      <!-- Dynamic Name with Animated Gradient and Neon Glow -->
+      <h2 class="text-2xl font-extrabold tracking-wide bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent animate-gradient-text neon-glow" [ngClass]="{'text-white': isDarkMode, 'text-black': !isDarkMode}">
+        {{ currentLanguage === 'en' ? 'ZEMA.FM' : 'ዜማ.FM' }}
+      </h2>
+    </div>
+
+    <!-- Right Section: Toggle Buttons and Logout (Unchanged) -->
+    <div class="flex items-center space-x-4 z-10">
+      <button (click)="toggleLanguage.emit()" class="navbar-btn font-semibold px-4 py-2 rounded-lg transition" [ngClass]="{'text-white bg-blue-500 hover:bg-blue-600': isDarkMode, 'text-black bg-yellow-500 hover:bg-yellow-600': !isDarkMode}" aria-label="Toggle language">
+        {{ currentLanguage === 'en' ? 'አማ' : 'Eng' }}
+      </button>
+      <button (click)="toggleTheme.emit()" class="navbar-btn font-semibold px-4 py-2 rounded-lg transition" [ngClass]="{'text-white bg-blue-500 hover:bg-blue-600': isDarkMode, 'text-black bg-yellow-500 hover:bg-yellow-600': !isDarkMode}" aria-label="Toggle theme">
+        <mat-icon>{{ isDarkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
+      </button>
+      <button *ngIf="authService.isAuthenticated()" (click)="handleLogout()" class="navbar-btn font-semibold px-4 py-2 rounded-lg transition" [ngClass]="{'text-white bg-red-500 hover:bg-red-600': isDarkMode, 'text-black bg-red-500 hover:bg-red-600': !isDarkMode}" aria-label="Log out">
+        {{ translations[currentLanguage].logout }}
+      </button>
+    </div>
+  </div>
+</div>

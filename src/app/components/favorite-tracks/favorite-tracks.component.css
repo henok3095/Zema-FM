@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+/* Card Styling */
+.p-6 {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.p-6:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.dark .p-6 {
+  background: rgba(30, 30, 30, 0.5);
+  color: #fff;
+}
+
+/* Button Styling */
+button {
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Responsive Design */
+@media (max-width: 767px) {
+  img {
+    width: 40px; /* Consistent size */
+    height: 40px;
+  }
+  .text-base {
+    font-size: 0.875rem; /* Smaller track name */
+  }
+  .text-sm {
+    font-size: 0.75rem; /* Smaller artist name */
+  }
+}
+
+@media (min-width: 768px) {
+  img {
+    width: 40px; /* Consistent size */
+    height: 40px;
+  }
+}
+
+h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700; /* Bold for the title */
+}
+
+p {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600; /* Medium bold for track names */
+}
+
+img {
+  transition: border-color 0.3s;
+}
+
+.favorite-tracks {
+  padding: 1rem;
+}
+
+.favorite-tracks.dark {
+  background-color: #333;
+  color: #fff;
+}
+
+.favorite-tracks.dark h2 {
+  color: #fff;
+}
+
+.favorite-tracks.dark button {
+  background-color: #555;
+  color: #fff;
+}

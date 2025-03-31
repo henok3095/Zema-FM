@@ -1,0 +1,39 @@
+<!-- src/app/components/search-input/search-input.component.html -->
+<div class="relative p-2 sm:p-4">
+  <!-- Search Icon -->
+  <span
+    class="absolute left-6 top-1/2 transform -translate-y-1/2 text-gray-400"
+    [ngClass]="{
+      'text-gray-400': !isDarkMode,
+      'text-gray-300': isDarkMode
+    }"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-5 w-5"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+      />
+    </svg>
+  </span>
+
+  <!-- Input Field -->
+  <input
+    [(ngModel)]="searchQuery"
+    (ngModelChange)="onSearchChange($event)"
+    type="text"
+    [placeholder]="currentLanguage === 'en' ? 'Search tracks & artists...' : 'ትራኮች እና አርቲስቶች ይፈልጉ...'"
+    class="w-full pl-12 pr-4 py-3 rounded-full border focus:outline-none transition-all duration-300 ease-in-out shadow-sm hover:shadow-md focus:shadow-lg backdrop-blur-md"
+    [ngClass]="{
+      'bg-white/70 text-black border-gray-300 hover:border-gray-400 focus:border-green-600 placeholder-gray-500': !isDarkMode,
+      'bg-gray-900/50 text-white border-gray-600 hover:border-gray-500 focus:border-green-500 placeholder-gray-400': isDarkMode
+    }"
+  />
+</div>

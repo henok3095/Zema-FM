@@ -1,0 +1,37 @@
+<!-- src/app/components/favorite-tracks/favorite-tracks.component.html -->
+<div class="p-2 sm:p-3 md:p-4 rounded-xl shadow-lg border transition h-full flex flex-col" [ngClass]="{'bg-gray-900/80 border-red-500/30 hover:border-red-500': isDarkMode, 'bg-white border-red-700/30 hover:border-red-700': !isDarkMode}">
+  <h3 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-1 sm:mb-2 md:mb-3 flex items-center gap-1 sm:gap-2 text-center justify-center" [ngClass]="{'text-white': isDarkMode, 'text-black': !isDarkMode}">
+    {{ translations[currentLanguage].favoriteTracks }}
+  </h3>
+  <div class="relative flex justify-center items-center max-w-full h-28 sm:h-32 md:h-36 lg:h-40">
+    <div *ngFor="let track of favoriteTracks.slice(0, 3); let i = index" class="absolute transition-all duration-300 hover:scale-125 hover:-translate-y-2 hover:shadow-2xl hover:shadow-red-500/50 hover:z-10" [ngClass]="{'-translate-x-16 sm:-translate-x-20 md:-translate-x-24 lg:-translate-x-28 -rotate-12': i === 0, 'z-10': i === 1, 'translate-x-16 sm:translate-x-20 md:translate-x-24 lg:translate-x-28 rotate-12': i === 2}">
+      <img [src]="track.image" alt="{{ track.name }}" class="w-20 sm:w-24 md:w-28 lg:w-32 h-20 sm:h-24 md:h-28 lg:h-32 rounded-lg shadow-md border-2 object-cover" [ngClass]="{'border-red-500': isDarkMode, 'border-red-700': !isDarkMode}">
+    </div>
+  </div>
+  <div class="space-y-1 sm:space-y-1.5 md:space-y-2 mt-2 sm:mt-3 flex-1 overflow-y-auto">
+    <div *ngFor="let track of visibleTracks; let i = index" class="flex items-center space-x-1 sm:space-x-1.5 md:space-x-2">
+      <span class="text-xs sm:text-sm md:text-base" [ngClass]="{'text-gray-400': isDarkMode, 'text-gray-700': !isDarkMode}">
+        {{ i + 1 }}.
+      </span>
+      <img [src]="track.image" alt="{{ track.name }}" class="w-5 sm:w-6 md:w-8 h-5 sm:h-6 md:h-8 rounded-lg shadow-md">
+      <div class="flex-1">
+        <p class="text-xs sm:text-sm md:text-base font-medium break-words" [ngClass]="{'text-gray-300': isDarkMode, 'text-gray-700': !isDarkMode}">
+          {{ track.name }}
+        </p>
+        <p class="text-xs sm:text-sm truncate" [ngClass]="{'text-gray-400': isDarkMode, 'text-gray-700': !isDarkMode}">
+          {{ track.artist }} ({{ track.playCount }} plays)
+        </p>
+      </div>
+      <div class="flex space-x-1 sm:space-x-1.5">
+        <button (click)="toggleFavorite(track)" class="text-sm sm:text-base md:text-lg transition-colors" [ngClass]="{'text-red-400 hover:text-red-300': isDarkMode, 'text-red-500 hover:text-red-600': !isDarkMode}">
+          <mat-icon>favorite</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="mt-4 text-center">
+    <a [routerLink]="['/favorite-tracks']" class="inline-block px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-full text-sm sm:text-base md:text-lg transition-colors">
+      {{ translations[currentLanguage].seeMore }}
+    </a>
+  </div>
+</div>

@@ -1,0 +1,146 @@
+<!-- src/app/pages/top-artists-page/top-artists-page.component.html -->
+<div class="min-h-screen flex flex-col bg-gradient-to-b from-gray-900 to-black text-white">
+  <!-- Navbar -->
+  <app-navbar
+    [isDarkMode]="isDarkMode"
+    [currentLanguage]="currentLanguage"
+    [translations]="translations"
+    (toggleTheme)="toggleTheme()"
+    (toggleLanguage)="toggleLanguage()"
+    (logout)="logout()"
+  ></app-navbar>
+
+  <!-- Main Content -->
+  <div class="flex-1 container mx-auto max-w-screen-lg px-6 py-12">
+    <!-- Back to Dashboard Button (Moved to Top) -->
+    <div class="flex justify-start mb-6">
+      <a
+        [routerLink]="['/dashboard']"
+        class="relative p-3 bg-gradient-to-r from-gray-700 to-gray-800 text-white rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:from-blue-600 hover:to-purple-600 group"
+        aria-label="Back to Dashboard"
+        title="Back to Dashboard"
+      >
+        <!-- Chevron Left Icon -->
+        <svg class="w-6 h-6 group-hover:animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        <!-- Hover Glow Effect -->
+        <span class="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+      </a>
+    </div>
+
+    <h2 class="text-4xl md:text-5xl font-extrabold tracking-wide bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent text-center animate-fade-in-up">
+      {{ translations[currentLanguage].topArtists || 'Top Artists' }}
+    </h2>
+
+    <!-- Toggle View Buttons -->
+    <div class="text-center mt-6 flex justify-center gap-4">
+      <!-- List View Button -->
+      <button
+        (click)="setView('list', $event)"
+        class="relative px-6 py-3 bg-gradient-to-r from-gray-700 to-gray-800 text-white rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:from-blue-600 hover:to-purple-600 group"
+        [ngClass]="{'ring-2 ring-blue-500': currentView === 'list'}"
+      >
+        <span class="flex items-center gap-2">
+          <svg class="w-5 h-5 group-hover:animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <span class="relative">
+            List View
+            <span class="absolute -top-1 -right-1 w-4 h-4 bg-blue-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+          </span>
+        </span>
+        <!-- Hover Glow Effect -->
+        <span class="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+      </button>
+
+      <!-- 2-Column Grid Button -->
+      <button
+        (click)="setView('grid2', $event)"
+        class="relative px-6 py-3 bg-gradient-to-r from-gray-700 to-gray-800 text-white rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:from-blue-600 hover:to-purple-600 group"
+        [ngClass]="{'ring-2 ring-blue-500': currentView === 'grid2'}"
+      >
+        <span class="flex items-center gap-2">
+          <svg class="w-5 h-5 group-hover:animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h8v12H4zm8 0h8v12h-8z"></path>
+          </svg>
+          <span class="relative">
+            2-Column Grid
+            <span class="absolute -top-1 -right-1 w-4 h-4 bg-purple-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+          </span>
+        </span>
+        <!-- Hover Glow Effect -->
+        <span class="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+      </button>
+
+      <!-- 3-Column Grid Button -->
+      <button
+        (click)="setView('grid3', $event)"
+        class="relative px-6 py-3 bg-gradient-to-r from-gray-700 to-gray-800 text-white rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:from-blue-600 hover:to-purple-600 group"
+        [ngClass]="{'ring-2 ring-blue-500': currentView === 'grid3'}"
+      >
+        <span class="flex items-center gap-2">
+          <svg class="w-5 h-5 group-hover:animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h4v12H4zm6 0h4v12h-4zm6 0h4v12h-4z"></path>
+          </svg>
+          <span class="relative">
+            3-Column Grid
+            <span class="absolute -top-1 -right-1 w-4 h-4 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+          </span>
+        </span>
+        <!-- Hover Glow Effect -->
+        <span class="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+      </button>
+    </div>
+
+    <!-- No Artists Found -->
+    <div *ngIf="artists.length === 0" class="text-gray-400 mt-8 text-lg text-center">
+      No artists found.
+    </div>
+
+    <!-- Artists List/Grid -->
+    <div
+      [ngClass]="{
+        'space-y-6': currentView === 'list',
+        'grid grid-cols-2 gap-6': currentView === 'grid2',
+        'grid md:grid-cols-3 grid-cols-2 gap-8': currentView === 'grid3'
+      }"
+      class="mt-8 animate-fade-in-up"
+    >
+      <div
+        *ngFor="let artist of artists; let i = index"
+        class="flex items-center p-3 rounded-lg shadow-lg transform transition hover:-translate-y-1 hover:shadow-2xl border border-transparent hover:border-blue-500 bg-gray-800/80 backdrop-blur-lg relative overflow-hidden"
+      >
+        <!-- Animated Background Glow -->
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/10 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
+
+        <!-- Artist Number -->
+        <span
+          class="text-lg font-bold text-gray-400 w-8 text-center relative z-10"
+        >
+          {{ i + 1 }}.
+        </span>
+
+        <!-- Artist Image -->
+        <img
+          [src]="artist.image"
+          alt="{{ artist.name }}"
+          class="w-14 h-14 rounded-lg shadow-lg relative z-10"
+        />
+
+        <!-- Artist Name -->
+        <div class="flex-1 ml-3 relative z-10">
+          <p
+            class="text-md font-semibold text-gray-200 tracking-wide"
+            [ngClass]="{ 'text-center': currentView !== 'list' }"
+          >
+            {{ artist.name }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <app-footer [isDarkMode]="isDarkMode"></app-footer>
+</div>

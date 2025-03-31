@@ -1,0 +1,61 @@
+/* src/app/components/now-playing/now-playing.component.css */
+/* Add custom animations */
+.animate-spin-slow {
+  animation: spin 10s linear infinite;
+}
+
+.animate-vinyl-spin {
+  animation: vinylSpin 3s linear infinite;
+}
+
+.animate-text-glow {
+  animation: textGlow 2s ease-in-out infinite alternate;
+}
+
+.animate-glow {
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes vinylSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes textGlow {
+  from { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #00ffff, 0 0 20px #00ffff; }
+  to { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00ffff, 0 0 40px #00ffff; }
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 5px #fff; }
+  to { box-shadow: 0 0 20px #00ffff; }
+}
+
+/* Component styles */
+:host {
+  display: block;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.dark {
+  background: #1a1a1a;
+  color: white;
+}
+
+.light {
+  background: #f0f0f0;
+  color: black;
+}
+
+img {
+  margin-right: 1rem;
+}
+
+.text-red-500 {
+  color: #ef4444;
+}

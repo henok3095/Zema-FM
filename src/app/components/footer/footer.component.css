@@ -1,0 +1,166 @@
+/* src/app/components/footer/footer.component.css */
+
+/* Gradient Background Animation */
+.animate-gradient-shift {
+    background-size: 200% 200%;
+    animation: gradientShift 15s ease-in-out infinite;
+  }
+  
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  /* Particle Animation */
+  .particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(147, 51, 234, 0.8);
+    border-radius: 50%;
+    animation: float 10s infinite ease-in-out;
+    opacity: 0.5;
+  }
+  
+  .particle:nth-child(1) { top: 10%; left: 15%; animation-delay: 0s; }
+  .particle:nth-child(2) { top: 20%; left: 30%; animation-delay: 1s; }
+  .particle:nth-child(3) { top: 30%; left: 45%; animation-delay: 2s; }
+  .particle:nth-child(4) { top: 40%; left: 60%; animation-delay: 3s; }
+  .particle:nth-child(5) { top: 50%; left: 75%; animation-delay: 4s; }
+  .particle:nth-child(6) { top: 60%; left: 20%; animation-delay: 5s; }
+  .particle:nth-child(7) { top: 70%; left: 35%; animation-delay: 6s; }
+  .particle:nth-child(8) { top: 80%; left: 50%; animation-delay: 7s; }
+  .particle:nth-child(9) { top: 90%; left: 65%; animation-delay: 8s; }
+  .particle:nth-child(10) { top: 95%; left: 80%; animation-delay: 9s; }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translateY(-20px) scale(1.2);
+      opacity: 0.8;
+    }
+  }
+  
+  /* Glowing Wave Effect on Hover */
+  footer:hover .animate-wave {
+    animation: wave 2s ease-in-out infinite;
+  }
+  
+  @keyframes wave {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  /* Fade-In Animation for Main Text */
+  .animate-fade-in {
+    animation: fadeIn 1.5s ease-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Typewriter Effect for Tagline */
+  .typewriter {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid rgba(147, 51, 234, 0.7);
+    animation: typing 3s steps(30, end) forwards, blink 0.75s step-end infinite;
+  }
+  
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  
+  @keyframes blink {
+    from, to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: rgba(147, 51, 234, 0.7);
+    }
+  }
+  
+  /* Soundwave Animation */
+  .soundwave-bar {
+    width: 4px;
+    height: 20px;
+    display: inline-block;
+    margin: 0 2px;
+    animation: soundwave 1.2s ease-in-out infinite;
+  }
+  
+  @keyframes soundwave {
+    0%, 100% {
+      transform: scaleY(0.3);
+    }
+    50% {
+      transform: scaleY(1);
+    }
+  }
+  
+  /* Gradient Border Animation */
+  .animate-gradient-border {
+    background-size: 200% 200%;
+    animation: gradientBorder 5s ease-in-out infinite;
+  }
+  
+  @keyframes gradientBorder {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  /* CSS-Based 3D Tilt Effect */
+  .tilt-content {
+    transition: transform 0.3s ease;
+  }
+  
+  footer:hover .tilt-content {
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+  }
+  
+  /* Ensure font consistency */
+  footer {
+    font-family: 'Poppins', sans-serif;
+  }

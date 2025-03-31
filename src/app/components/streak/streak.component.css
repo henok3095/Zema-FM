@@ -1,0 +1,124 @@
+/* src/app/components/streak/streak.component.css */
+
+/* Vinyl Record Spin Animation */
+.animate-spin-slow {
+  animation: spin 10s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Particle Animation */
+.particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: rgba(249, 115, 22, 0.8);
+  border-radius: 50%;
+  animation: floatParticle 6s infinite ease-in-out;
+  opacity: 0.5;
+}
+
+.particle:nth-child(1) { top: 10%; left: 15%; animation-delay: 0s; }
+.particle:nth-child(2) { top: 20%; left: 30%; animation-delay: 1s; }
+.particle:nth-child(3) { top: 30%; left: 45%; animation-delay: 2s; }
+.particle:nth-child(4) { top: 40%; left: 60%; animation-delay: 3s; }
+.particle:nth-child(5) { top: 50%; left: 75%; animation-delay: 4s; }
+
+@keyframes floatParticle {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-15px) scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+/* Animated Gradient Text */
+.animate-gradient-text {
+  background-size: 200% 200%;
+  animation: gradientText 5s ease-in-out infinite;
+}
+
+@keyframes gradientText {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Neon Glow Effect for Title */
+.neon-glow {
+  text-shadow: 0 0 5px rgba(249, 115, 22, 0.5), 0 0 10px rgba(249, 115, 22, 0.3), 0 0 15px rgba(239, 68, 68, 0.2);
+  animation: neonPulse 2s ease-in-out infinite;
+}
+
+@keyframes neonPulse {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(249, 115, 22, 0.5), 0 0 10px rgba(249, 115, 22, 0.3), 0 0 15px rgba(239, 68, 68, 0.2);
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(249, 115, 22, 0.8), 0 0 20px rgba(249, 115, 22, 0.5), 0 0 30px rgba(239, 68, 68, 0.4);
+  }
+}
+
+/* Floating Animation for Music Notes */
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(5deg);
+  }
+}
+
+/* Scrollbar Styling for the List */
+.max-h-48 {
+  max-height: 12rem;
+}
+
+.overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background: rgba(249, 115, 22, 0.5);
+  border-radius: 3px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: rgba(249, 115, 22, 0.8);
+}
+
+/* Ensure font consistency */
+div, h3, h4, ul, li, p {
+  font-family: 'Poppins', sans-serif;
+}

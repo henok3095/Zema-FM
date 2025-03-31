@@ -1,0 +1,36 @@
+/* Ensure Font Awesome is included for social media icons */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+/* Custom styles to enhance the design */
+button {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+img[src="/spotify-stats/src/assets/spotify-icon.svg"] {
+  filter: brightness(0) invert(1); /* Ensure Spotify icon is white */
+}
+
+/* Animation tweaks */
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.4; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  p {
+    font-size: 0.875rem;
+  }
+  button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+}

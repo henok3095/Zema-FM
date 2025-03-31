@@ -1,0 +1,36 @@
+/* Compact styling for small screens */
+@media (max-width: 639px) {
+  .compact-on-small {
+    /* Reduce padding inside components */
+    padding: 0.5rem !important; /* Matches p-2 */
+  }
+
+  /* Reduce image sizes in TopArtists, TopTracks, etc. */
+  .compact-on-small img {
+    width: 3rem !important; /* Smaller images on small screens */
+    height: 3rem !important;
+  }
+
+  /* Reduce font sizes */
+  .compact-on-small h3 {
+    font-size: 1.25rem !important; /* Smaller title (20px) */
+  }
+
+  .compact-on-small p,
+  .compact-on-small span {
+    font-size: 0.875rem !important; /* Slightly larger text (14px) for readability */
+  }
+}
+
+/* Ensure the container is scrollable */
+.h-screen {
+  height: auto;
+  min-height: 100vh;
+}
+
+/* Optional: Adjust grid item min-width for better balance */
+@media (min-width: 640px) {
+  .grid > div {
+    min-width: 0; /* Prevents grid items from overflowing */
+  }
+}

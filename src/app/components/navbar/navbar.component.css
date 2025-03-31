@@ -1,0 +1,197 @@
+/* src/app/components/navbar/navbar.component.css */
+
+/* Glowing Wave Effect on Hover */
+.group:hover .animate-wave {
+  animation: wave 2s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Vinyl Record Spin Animation */
+.animate-spin-slow {
+  animation: spin 10s linear infinite;
+}
+
+.animate-spin {
+  animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Animated Gradient Text */
+.animate-gradient-text {
+  background-size: 200% 200%;
+  animation: gradientText 5s ease-in-out infinite;
+}
+
+@keyframes gradientText {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Neon Glow Effect */
+.neon-glow {
+  text-shadow: 0 0 5px rgba(59, 130, 246, 0.5), 0 0 10px rgba(59, 130, 246, 0.3), 0 0 15px rgba(147, 51, 234, 0.2);
+  animation: neonPulse 2s ease-in-out infinite;
+}
+
+@keyframes neonPulse {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(59, 130, 246, 0.5), 0 0 10px rgba(59, 130, 246, 0.3), 0 0 15px rgba(147, 51, 234, 0.2);
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.8), 0 0 20px rgba(59, 130, 246, 0.5), 0 0 30px rgba(147, 51, 234, 0.4);
+  }
+}
+
+/* Particle Animation */
+.particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: rgba(147, 51, 234, 0.8);
+  border-radius: 50%;
+  animation: floatParticle 6s infinite ease-in-out;
+  opacity: 0.5;
+}
+
+.particle:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+.particle:nth-child(2) { top: 20%; left: 15%; animation-delay: 1s; }
+.particle:nth-child(3) { top: 30%; left: 25%; animation-delay: 2s; }
+.particle:nth-child(4) { top: 40%; left: 35%; animation-delay: 3s; }
+.particle:nth-child(5) { top: 50%; left: 45%; animation-delay: 4s; }
+
+@keyframes floatParticle {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-10px) scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+/* Ensure font consistency */
+div, h2, button {
+  font-family: 'Poppins', sans-serif;
+}/* src/app/components/navbar/navbar.component.css */
+
+/* Vinyl Record Spin Animation */
+.animate-spin-slow {
+  animation: spin 10s linear infinite;
+}
+
+.animate-spin {
+  animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Animated Gradient Text */
+.animate-gradient-text {
+  background-size: 200% 200%;
+  animation: gradientText 5s ease-in-out infinite;
+}
+
+@keyframes gradientText {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Neon Glow Effect */
+.neon-glow {
+  text-shadow: 0 0 5px rgba(59, 130, 246, 0.5), 0 0 10px rgba(59, 130, 246, 0.3), 0 0 15px rgba(147, 51, 234, 0.2);
+  animation: neonPulse 2s ease-in-out infinite;
+}
+
+@keyframes neonPulse {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(59, 130, 246, 0.5), 0 0 10px rgba(59, 130, 246, 0.3), 0 0 15px rgba(147, 51, 234, 0.2);
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.8), 0 0 20px rgba(59, 130, 246, 0.5), 0 0 30px rgba(147, 51, 234, 0.4);
+  }
+}
+
+/* Particle Animation */
+.particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: rgba(147, 51, 234, 0.8);
+  border-radius: 50%;
+  animation: floatParticle 6s infinite ease-in-out;
+  opacity: 0.5;
+}
+
+.particle:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+.particle:nth-child(2) { top: 20%; left: 15%; animation-delay: 1s; }
+.particle:nth-child(3) { top: 30%; left: 25%; animation-delay: 2s; }
+.particle:nth-child(4) { top: 40%; left: 35%; animation-delay: 3s; }
+.particle:nth-child(5) { top: 50%; left: 45%; animation-delay: 4s; }
+
+@keyframes floatParticle {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-10px) scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+/* Ensure font consistency */
+div, h2, button {
+  font-family: 'Poppins', sans-serif;
+}

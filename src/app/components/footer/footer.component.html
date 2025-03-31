@@ -1,0 +1,46 @@
+<!-- src/app/components/footer/footer.component.html -->
+<footer class="relative py-8 text-center overflow-hidden bg-gradient-to-r from-gray-900 via-gray-800 to-black animate-gradient-shift">
+  <!-- Particle Background -->
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="particles">
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+    </div>
+  </div>
+
+  <!-- Footer Content with 3D Tilt -->
+  <div class="relative z-10 tilt-content" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-perspective="1000">
+    <!-- Glowing Wave Effect on Hover -->
+    <div class="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-wave"></div>
+
+    <!-- Main Footer Text with Gradient and Glow -->
+    <p class="text-xl md:text-2xl font-extrabold tracking-wider bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(147,51,234,0.7)] animate-fade-in">
+      {{ translations[currentLanguage]?.footerText || '© 2025 Zema(ዜማ) Fm' }}
+    </p>
+
+    <!-- Tagline with Typewriter Effect -->
+    <p class="mt-3 text-sm text-gray-300 font-light tracking-wide typewriter">
+      Powered by Spotify API 
+    </p>
+
+    <!-- Soundwave Visualizer -->
+    <div class="mt-4 flex justify-center gap-1">
+      <span class="soundwave-bar bg-blue-500"></span>
+      <span class="soundwave-bar bg-purple-500" style="animation-delay: 0.2s;"></span>
+      <span class="soundwave-bar bg-blue-500" style="animation-delay: 0.4s;"></span>
+      <span class="soundwave-bar bg-purple-500" style="animation-delay: 0.6s;"></span>
+      <span class="soundwave-bar bg-blue-500" style="animation-delay: 0.8s;"></span>
+    </div>
+  </div>
+
+  <!-- Bottom Gradient Border with Animation -->
+  <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 animate-gradient-border"></div>
+</footer>
