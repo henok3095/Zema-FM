@@ -234,15 +234,15 @@ export class AuthService {
     this.codeVerifier = this.generateRandomString(128);
     const codeChallenge = await this.generateCodeChallenge(this.codeVerifier);
     localStorage.setItem('code_verifier', this.codeVerifier);
-    console.log('AuthService: Generated code_verifier:', this.codeVerifier); // Log the code_verifier
+    console.log('AuthService: Generated code_verifier:', this.codeVerifier);
 
-    const showDialog = !this.hasAuthorized;
+    // Force the authorization dialog to show every time
+    const showDialog = true;
     const authUrl = `https://accounts.spotify.com/authorize?client_id=${this.clientId}&response_type=code&redirect_uri=${encodeURIComponent(this.redirectUri)}&scope=${encodeURIComponent(this.scopes.join(' '))}&show_dialog=${showDialog}&code_challenge_method=S256&code_challenge=${codeChallenge}`;
     console.log('AuthService: Redirecting to:', authUrl);
     window.location.href = authUrl;
   }
 
-  // Updated handleCallback method
   async handleCallback(code: string): Promise<void> {
     if (!isPlatformBrowser(this.platformId)) {
       console.log('AuthService: Not in browser, skipping callback handling');
@@ -251,7 +251,7 @@ export class AuthService {
 
     console.log('AuthService: Handling callback with code:', code);
     this.codeVerifier = localStorage.getItem('code_verifier');
-    console.log('AuthService: Retrieved code_verifier:', this.codeVerifier); // Log the retrieved code_verifier
+    console.log('AuthService: Retrieved code_verifier:', this.codeVerifier);
     if (!this.codeVerifier) {
       console.error('AuthService: No code verifier found in localStorage');
       throw new Error('Code verifier not found. Please try logging in again.');
