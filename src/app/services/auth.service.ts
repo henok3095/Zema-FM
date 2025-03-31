@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
+import { environment } from '../../environments/environment'; // Import environment
 
 // Define the token response interface
 interface TokenResponse {
@@ -25,8 +26,8 @@ interface SpotifyUserProfile {
   providedIn: 'root',
 })
 export class AuthService {
-  private clientId = 'a6620f5c77e343cabe21a56dc5a05746'; // Your Spotify client ID
-  private redirectUri = 'http://localhost:4200/callback'; // Your redirect URI
+  private clientId = environment.spotifyClientId; // Use environment variable
+  private redirectUri = environment.redirectUri; // Use environment variable
   private scopes = [
     'user-read-private',
     'user-read-email',
