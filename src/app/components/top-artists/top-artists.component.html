@@ -9,13 +9,16 @@
     </div>
   </div>
   <div class="space-y-1 sm:space-y-1.5 md:space-y-2 mt-2 sm:mt-3 flex-1 overflow-y-auto">
-    <div *ngFor="let artist of visibleArtists; let i = index" class="flex items-center space-x-1 sm:space-x-1.5 md:space-x-2">
+    <div *ngFor="let artist of visibleArtists; let i = index" class="flex items-center space-x-1 sm:space-x-1.5 md:space-x-2 p-2 rounded-lg" [ngClass]="{
+      'bg-gray-800/50 border border-gray-700': isDarkMode,
+      'bg-gray-100 border border-gray-300': !isDarkMode
+    }">
       <span class="text-xs sm:text-sm md:text-base" [ngClass]="{'text-gray-400': isDarkMode, 'text-gray-700': !isDarkMode}">
         {{ i + 1 }}.
       </span>
-      <img [src]="artist.image" alt="{{ artist.name }}" class="w-5 sm:w-6 md:w-8 h-5 sm:h-6 md:h-8 rounded-lg shadow-md">
-      <div class="flex-1">
-        <p class="text-xs sm:text-sm md:text-base font-medium break-words" [ngClass]="{'text-gray-300': isDarkMode, 'text-gray-700': !isDarkMode}">
+      <img [src]="artist.image" alt="{{ artist.name }}" class="w-4 sm:w-5 md:w-6 h-4 sm:h-5 md:h-6 rounded-lg shadow-md">
+      <div class="flex-1" style="min-height: 2.5rem;">
+        <p class="text-xs sm:text-sm md:text-base font-bold break-words" [ngClass]="{'text-gray-300': isDarkMode, 'text-gray-700': !isDarkMode}">
           {{ artist.name }}
         </p>
         <p class="text-xs sm:text-sm truncate" [ngClass]="{'text-gray-400': isDarkMode, 'text-gray-700': !isDarkMode}">

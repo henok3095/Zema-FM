@@ -25,13 +25,13 @@
       </h2>
     </div>
 
-    <!-- Right Section: Toggle Buttons and Logout (Unchanged) -->
+    <!-- Right Section: Toggle Buttons and Logout (Updated) -->
     <div class="flex items-center space-x-4 z-10">
-      <button (click)="toggleLanguage.emit()" class="navbar-btn font-semibold px-4 py-2 rounded-lg transition" [ngClass]="{'text-white bg-blue-500 hover:bg-blue-600': isDarkMode, 'text-black bg-yellow-500 hover:bg-yellow-600': !isDarkMode}" aria-label="Toggle language">
+      <button (click)="toggleLanguage.emit()" class="navbar-btn font-semibold px-4 py-2 rounded-lg transition hidden sm:block" [ngClass]="{'text-white bg-blue-500 hover:bg-blue-600': isDarkMode, 'text-black bg-yellow-500 hover:bg-yellow-600': !isDarkMode}" aria-label="Toggle language">
         {{ currentLanguage === 'en' ? 'አማ' : 'Eng' }}
       </button>
-      <button (click)="toggleTheme.emit()" class="navbar-btn font-semibold px-4 py-2 rounded-lg transition" [ngClass]="{'text-white bg-blue-500 hover:bg-blue-600': isDarkMode, 'text-black bg-yellow-500 hover:bg-yellow-600': !isDarkMode}" aria-label="Toggle theme">
-        <mat-icon>{{ isDarkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
+      <button (click)="toggleTheme.emit()" class="navbar-btn px-2 py-2 rounded-md transition flex items-center justify-center" [ngClass]="{'text-white bg-blue-500 hover:bg-blue-600': isDarkMode, 'text-black bg-yellow-500 hover:bg-yellow-600': !isDarkMode}" aria-label="Toggle theme">
+        <mat-icon class="text-base">{{ isDarkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
       </button>
       <button *ngIf="authService.isAuthenticated()" (click)="handleLogout()" class="navbar-btn font-semibold px-4 py-2 rounded-lg transition" [ngClass]="{'text-white bg-red-500 hover:bg-red-600': isDarkMode, 'text-black bg-red-500 hover:bg-red-600': !isDarkMode}" aria-label="Log out">
         {{ translations[currentLanguage].logout }}

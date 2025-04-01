@@ -22,11 +22,6 @@
           {{ track.artist }} ({{ track.playCount }} plays)
         </p>
       </div>
-      <div class="flex space-x-1 sm:space-x-1.5">
-        <button (click)="toggleFavorite(track)" class="text-sm sm:text-base md:text-lg transition-colors" [ngClass]="{'text-red-400 hover:text-red-300': isDarkMode, 'text-red-500 hover:text-red-600': !isDarkMode}">
-          <mat-icon>favorite</mat-icon>
-        </button>
-      </div>
     </div>
   </div>
   <div class="mt-4 text-center">

@@ -39,4 +39,50 @@
   /* Ensure buttons are responsive */
   button {
     font-family: 'Poppins', sans-serif;
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+
+  @media (max-width: 768px) {
+    button {
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    button {
+      padding: 6px 12px;
+      font-size: 12px;
+      width: 100%; /* Make buttons full-width on very small screens */
+      display: none; /* Hide buttons on small screens */
+    }
+  }
+
+  /* Grid layout styles */
+  .grid-2-columns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .grid-3-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  /* Responsive adjustments for grids */
+  @media (max-width: 768px) {
+    .grid-2-columns,
+    .grid-3-columns {
+      grid-template-columns: repeat(2, 1fr); /* Use 2 columns for medium screens */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .grid-2-columns,
+    .grid-3-columns {
+      grid-template-columns: 1fr; /* Use 1 column for small screens */
+    }
   }

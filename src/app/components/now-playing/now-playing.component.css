@@ -25,21 +25,41 @@
 }
 
 @keyframes textGlow {
-  from { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #00ffff, 0 0 20px #00ffff; }
-  to { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00ffff, 0 0 40px #00ffff; }
+  from { text-shadow: 0 0 3px #fff, 0 0 6px #fff, 0 0 9px #00ffff, 0 0 12px #00ffff; }
+  to { text-shadow: 0 0 6px #fff, 0 0 12px #fff, 0 0 18px #00ffff, 0 0 24px #00ffff; }
+}
+
+@media (min-width: 640px) {
+  @keyframes textGlow {
+    from { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #00ffff, 0 0 20px #00ffff; }
+    to { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00ffff, 0 0 40px #00ffff; }
+  }
 }
 
 @keyframes glow {
-  from { box-shadow: 0 0 5px #fff; }
-  to { box-shadow: 0 0 20px #00ffff; }
+  from { box-shadow: 0 0 3px #fff; }
+  to { box-shadow: 0 0 12px #00ffff; }
+}
+
+@media (min-width: 640px) {
+  @keyframes glow {
+    from { box-shadow: 0 0 5px #fff; }
+    to { box-shadow: 0 0 20px #00ffff; }
+  }
 }
 
 /* Component styles */
 :host {
   display: block;
-  padding: 1rem;
+  padding: 0.5rem;
   border-radius: 8px;
   transition: all 0.3s;
+}
+
+@media (min-width: 640px) {
+  :host {
+    padding: 1rem;
+  }
 }
 
 .dark {
@@ -53,7 +73,13 @@
 }
 
 img {
-  margin-right: 1rem;
+  margin-right: 0;
+}
+
+@media (min-width: 640px) {
+  img {
+    margin-right: 1rem;
+  }
 }
 
 .text-red-500 {

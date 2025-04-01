@@ -9,16 +9,19 @@
     </div>
   </div>
   <div class="space-y-1 sm:space-y-1.5 md:space-y-2 mt-2 sm:mt-3 flex-1 overflow-y-auto">
-    <div *ngFor="let track of visibleTracks; let i = index" class="flex items-center space-x-1 sm:space-x-1.5 md:space-x-2">
+    <div *ngFor="let track of visibleTracks; let i = index" class="flex items-center space-x-1 sm:space-x-1.5 md:space-x-2 p-2 rounded-lg" [ngClass]="{
+      'bg-gray-800/50 border border-gray-700': isDarkMode,
+      'bg-gray-100 border border-gray-300': !isDarkMode
+    }">
       <span class="text-xs sm:text-sm md:text-base" [ngClass]="{'text-gray-400': isDarkMode, 'text-gray-700': !isDarkMode}">
         {{ i + 1 }}.
       </span>
       <img [src]="track.image" alt="{{ track.name }}" class="w-5 sm:w-6 md:w-8 h-5 sm:h-6 md:h-8 rounded-lg shadow-md">
       <div class="flex-1">
-        <p class="text-xs sm:text-sm md:text-base font-medium break-words" [ngClass]="{'text-gray-300': isDarkMode, 'text-gray-700': !isDarkMode}">
+        <p class="text-xs sm:text-sm md:text-base font-bold break-words" [ngClass]="{'text-gray-300': isDarkMode, 'text-gray-700': !isDarkMode}">
           {{ track.name }}
         </p>
-        <p class="text-xs sm:text-sm truncate" [ngClass]="{'text_gray-400': isDarkMode, 'text-gray-700': !isDarkMode}">
+        <p class="text-xs sm:text-sm truncate font-light" [ngClass]="{'text-gray-400': isDarkMode, 'text-gray-700': !isDarkMode}">
           {{ track.artist }}
         </p>
       </div>
