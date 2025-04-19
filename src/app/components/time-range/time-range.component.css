@@ -1,3 +1,91 @@
-button {
-  transition: background-color 0.3s ease;
+/* Pulse animation for active buttons (rotating gradient border) */
+.border-pulse {
+  position: relative;
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+.border-pulse::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 2px solid transparent;
+  border-radius: 9999px;
+  background: linear-gradient(45deg, #2dd4bf, #ec4899, #2dd4bf) border-box;
+  background-size: 200% 100%;
+  animation: orbit 2s linear infinite;
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+@keyframes orbit {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.02); opacity: 0.95; }
+}
+
+/* Border expand effect on hover (replacing glow and vibration) */
+.border-expand::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 2px solid #2dd4bf;
+  border-radius: 9999px;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.border-expand:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Ripple effect on click */
+.ripple-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-effect::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
+  pointer-events: none;
+}
+
+.ripple-effect:active::after {
+  width: 200px;
+  height: 200px;
+  opacity: 0;
+}
+
+/* Dynamic gradient animation for active buttons */
+.bg-gradient-to-r.from-teal-500.to-pink-500 {
+  background: linear-gradient(90deg, #2dd4bf, #ec4899, #2dd4bf);
+  background-size: 200% 100%;
+  animation: gradient-flow 3.5s ease infinite;
+}
+
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }

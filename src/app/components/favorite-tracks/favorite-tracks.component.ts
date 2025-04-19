@@ -1,4 +1,4 @@
-// src/app/components/favorite-tracks/favorite-tracks.component.ts
+
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';

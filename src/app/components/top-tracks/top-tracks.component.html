@@ -25,11 +25,11 @@
           {{ track.artist }}
         </p>
       </div>
-      <div class="flex space-x-1 sm:space-x-1.5">
+      <!-- <div class="flex space-x-1 sm:space-x-1.5">
         <button (click)="toggleFavorite(track)" class="text-sm sm:text-base md:text-lg transition-colors" [ngClass]="{'text-gray-400 hover:text-red-400': isDarkMode, 'text-gray-600 hover:text-red-500': !isDarkMode}">
           <mat-icon>{{ isFavorite(track) ? 'favorite' : 'favorite_border' }}</mat-icon>
         </button>
-      </div>
+      </div> -->
     </div>
   </div>
   <div *ngIf="spotifyPlayerUrl" class="mt-2 sm:mt-2.5 md:mt-3 text-center">

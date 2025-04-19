@@ -25,7 +25,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { isPlatformBrowser } from '@angular/common';
 import { firstValueFrom } from 'rxjs';
 import { first, defaultIfEmpty, tap, catchError } from 'rxjs/operators';
-import { FavoriteTrack } from '../../types/favorite-track'; // Import the shared type
+import { FavoriteTrack } from '../../types/favorite-track';
 import { StreakService } from '../../services/streak.service';
 import { Translations } from '../../interfaces/translations.interface';
 
@@ -136,7 +136,7 @@ interface RecentlyPlayedTrack {
 })
 export class DashboardComponent implements OnInit {
   isDarkMode: boolean = false;
-  isLoading: boolean = false;
+  isInitialLoading: boolean = false; // Only for initial login load
   user: User | null = {
     name: '',
     email: '',
@@ -270,12 +270,14 @@ export class DashboardComponent implements OnInit {
       setTimeout(() => this.router.navigate(['/login']), 3000);
       return;
     }
-    await this.loadUserData();
+    await this.loadUserData(true); // Initial load with spinner
   }
 
-  async loadUserData(): Promise<void> {
-    console.log('DashboardComponent: loadUserData started');
-    this.isLoading = true;
+  async loadUserData(isInitialLoad: boolean = false): Promise<void> {
+    console.log('DashboardComponent: loadUserData started, isInitialLoad:', isInitialLoad);
+    if (isInitialLoad) {
+      this.isInitialLoading = true; // Show spinner only for initial load
+    }
     this.errorMessage = null;
 
     const timeout = new Promise<never>((_, reject) => {
@@ -401,7 +403,7 @@ export class DashboardComponent implements OnInit {
     } catch (error: unknown) {
       console.error('DashboardComponent: Error loading user data:', error);
       let errorMessage = 'Failed to load data from Spotify. Please try logging in again.';
-      const err = error as Error; // Cast error to Error
+      const err = error as Error;
       if (err.message.includes('401') || err.message.includes('Token expired')) {
         errorMessage = 'Your session has expired. Please log in again.';
       } else if (err.message.includes('Data loading timed out')) {
@@ -413,9 +415,11 @@ export class DashboardComponent implements OnInit {
         this.router.navigate(['/login']);
       }, 3000);
     } finally {
-      console.log('DashboardComponent: Setting isLoading to false');
-      this.isLoading = false;
-      console.log('DashboardComponent: isLoading:', this.isLoading, 'errorMessage:', this.errorMessage);
+      if (isInitialLoad) {
+        console.log('DashboardComponent: Setting isInitialLoading to false');
+        this.isInitialLoading = false;
+      }
+      console.log('DashboardComponent: isInitialLoading:', this.isInitialLoading, 'errorMessage:', this.errorMessage);
     }
   }
 
@@ -447,7 +451,7 @@ export class DashboardComponent implements OnInit {
 
   changeTimeRange(range: 'short_term' | 'medium_term' | 'long_term') {
     this.timeRange = range;
-    this.loadUserData();
+    this.loadUserData(false); // No spinner for time range change
   }
 
   onTimeRangeChange(event: 'short_term' | 'medium_term' | 'long_term') {
