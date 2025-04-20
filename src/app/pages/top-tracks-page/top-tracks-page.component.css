@@ -1,88 +1,144 @@
-/* src/app/pages/top-tracks-page/top-tracks-page.component.css */
-
 /* Fade-in animation for the title and cards */
 .animate-fade-in-up {
-    animation: fadeInUp 0.8s ease-out forwards;
-  }
-  
-  @keyframes fadeInUp {
-    0% {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  /* Pulse animation for icons on hover */
-  .group:hover .group-hover\:animate-pulse {
-    animation: pulse 1.5s infinite;
-  }
-  
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-      opacity: 1;
-    }
-    50% {
-      transform: scale(1.2);
-      opacity: 0.7;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
-  
-  /* Ensure buttons are responsive */
-  button {
-    font-family: 'Poppins', sans-serif;
-    padding: 10px 20px;
-    font-size: 16px;
-  }
+  animation: fadeInUp 0.8s ease-out forwards;
+}
 
-  @media (max-width: 768px) {
-    button {
-      padding: 8px 16px;
-      font-size: 14px;
-    }
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
   }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-  @media (max-width: 480px) {
-    button {
-      padding: 6px 12px;
-      font-size: 12px;
-      width: 100%; /* Make buttons full-width on very small screens */
-      display: none; /* Hide buttons on small screens */
-    }
-  }
+/* Pulse animation for icons on hover */
+.group:hover .group-hover\:animate-pulse {
+  animation: pulse 1.5s infinite;
+}
 
-  /* Grid layout styles */
-  .grid-2-columns {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
   }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 
-  .grid-3-columns {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
+/* Line clamp for text overflow */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-  /* Responsive adjustments for grids */
-  @media (max-width: 768px) {
-    .grid-2-columns,
-    .grid-3-columns {
-      grid-template-columns: repeat(2, 1fr); /* Use 2 columns for medium screens */
-    }
+/* Neon glow effect for dropdown */
+@keyframes neonGlow {
+  0% {
+    box-shadow: 0 0 3px rgba(45, 212, 191, 0.3), 0 0 6px rgba(219, 39, 119, 0.3);
   }
+  50% {
+    box-shadow: 0 0 6px rgba(45, 212, 191, 0.5), 0 0 12px rgba(219, 39, 119, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 3px rgba(45, 212, 191, 0.3), 0 0 6px rgba(219, 39, 119, 0.3);
+  }
+}
 
-  @media (max-width: 480px) {
-    .grid-2-columns,
-    .grid-3-columns {
-      grid-template-columns: 1fr; /* Use 1 column for small screens */
-    }
+/* Custom dropdown styling */
+.custom-dropdown {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: linear-gradient(45deg, #2dd4bf, #db2777); /* Static gradient */
+  border-radius: 9999px; /* Full rounded */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, width 0.3s ease;
+}
+
+/* Expand on hover and focus */
+.custom-dropdown:hover,
+.custom-dropdown:focus {
+  transform: scale(1.02) rotate(1deg);
+  animation: neonGlow 3s infinite;
+  width: 140px; /* Expand on interaction (slightly larger than sm:w-32) */
+}
+
+/* Custom arrow with vinyl record design */
+.custom-dropdown {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Ccircle cx='12' cy='12' r='2' fill='%23ffffff'/%3E%3Cpath d='M12 16l4-4-4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 1em; /* Smaller arrow for smaller dropdown */
+}
+
+/* Style the dropdown options */
+.custom-dropdown option {
+  background: #1f2937; /* Gray-800 */
+  color: #ffffff;
+  font-size: 0.75rem; /* Smaller font for options */
+}
+
+/* Hover effect for options (not directly stylable in all browsers, but works in some) */
+.custom-dropdown option:hover {
+  background: #374151; /* Gray-700 */
+}
+
+/* Responsive adjustments for dropdown */
+@media (max-width: 640px) {
+  .custom-dropdown {
+    padding: 4px 8px;
+    font-size: 0.625rem; /* Smaller than text-xs */
   }
+  .custom-dropdown {
+    background-position: right 0.5rem center;
+    background-size: 0.875em;
+  }
+  .custom-dropdown:hover,
+  .custom-dropdown:focus {
+    width: 100px; /* Smaller expansion on small screens */
+  }
+}
+
+/* Responsive grid adjustments */
+@media (max-width: 640px) {
+  .grid.grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on small screens */
+  }
+  .grid.grid-cols-2.sm\:grid-cols-3,
+  .grid.grid-cols-2.sm\:grid-cols-3.lg\:grid-cols-5 {
+    grid-template-columns: repeat(2, 1fr); /* Force 2 columns on small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .grid.grid-cols-2 {
+    grid-template-columns: 1fr; /* 1 column on very small screens */
+  }
+  .grid.grid-cols-2.sm\:grid-cols-3,
+  .grid.grid-cols-2.sm\:grid-cols-3.lg\:grid-cols-5 {
+    grid-template-columns: 1fr; /* 1 column on very small screens */
+  }
+}
+
+/* Adjust time range buttons and dropdown for small screens */
+@media (max-width: 640px) {
+  .space-y-4 {
+    gap: 8px;
+  }
+  .space-x-4 button {
+    padding: 6px 10px;
+    font-size: 0.75rem; /* text-xs */
+  }
+}
