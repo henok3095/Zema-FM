@@ -2,7 +2,7 @@
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { SpotifyService } from '../../services/spotify.service';
 import { AuthService } from '../../services/auth.service';
 import { DataService } from '../../services/data.service';
@@ -213,11 +213,19 @@ export class DashboardComponent implements OnInit {
     private router: Router,
     private dataService: DataService,
     private streakService: StreakService,
+    private route: ActivatedRoute, // Added ActivatedRoute
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   async ngOnInit(): Promise<void> {
     console.log('DashboardComponent: ngOnInit started');
+
+    // Check for skipLoadingSpinner query parameter
+    const skipLoadingSpinner = this.route.snapshot.queryParamMap.get('skipLoadingSpinner') === 'true';
+    if (!skipLoadingSpinner) {
+      this.isInitialLoading = true; // Show spinner only if skipLoadingSpinner is not set
+    }
+
     if (isPlatformBrowser(this.platformId)) {
       const theme = localStorage.getItem('theme');
       this.isDarkMode = theme === 'dark';
@@ -270,7 +278,7 @@ export class DashboardComponent implements OnInit {
       setTimeout(() => this.router.navigate(['/login']), 3000);
       return;
     }
-    await this.loadUserData(true); // Initial load with spinner
+    await this.loadUserData(!skipLoadingSpinner); // Pass the flag to loadUserData
   }
 
   async loadUserData(isInitialLoad: boolean = false): Promise<void> {
