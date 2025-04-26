@@ -2,9 +2,10 @@
   <button 
     (click)="onTimeRangeChange('short_term')" 
     [ngClass]="{
-      'bg-gradient-to-r from-teal-500 to-pink-500 text-white shadow-glow animate-orbit': timeRange === 'short_term',
+      'bg-gradient-to-r from-teal-500 to-pink-500 text-white shadow-glow animate-orbit': timeRange === 'short_term' && isDarkMode,
+      'bg-gradient-to-r from-teal-400 to-pink-400 text-gray-900 shadow-glow animate-orbit': timeRange === 'short_term' && !isDarkMode,
       'bg-gray-800 hover:bg-gray-700 text-gray-200 hover:text-white hover:shadow-glow/50': isDarkMode && timeRange !== 'short_term',
-      'bg-white/10 hover:bg-white/20 text-gray-200 hover:text-white hover:shadow-glow/50 backdrop-blur-sm': !isDarkMode && timeRange !== 'short_term'
+      'bg-gray-200 hover:bg-gray-300 text-gray-800 hover:text-gray-900 hover:shadow-glow/50': !isDarkMode && timeRange !== 'short_term'
     }" 
     class="relative px-5 py-2.5 rounded-full font-semibold text-sm tracking-wide whitespace-nowrap transition-all duration-400 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-teal-400/50 ripple-effect vibrate-effect">
     <span class="relative z-10">4 Weeks</span>
@@ -13,9 +14,10 @@
   <button 
     (click)="onTimeRangeChange('medium_term')" 
     [ngClass]="{
-      'bg-gradient-to-r from-teal-500 to-pink-500 text-white shadow-glow animate-orbit': timeRange === 'medium_term',
+      'bg-gradient-to-r from-teal-500 to-pink-500 text-white shadow-glow animate-orbit': timeRange === 'medium_term' && isDarkMode,
+      'bg-gradient-to-r from-teal-400 to-pink-400 text-gray-900 shadow-glow animate-orbit': timeRange === 'medium_term' && !isDarkMode,
       'bg-gray-800 hover:bg-gray-700 text-gray-200 hover:text-white hover:shadow-glow/50': isDarkMode && timeRange !== 'medium_term',
-      'bg-white/10 hover:bg-white/20 text-gray-200 hover:text-white hover:shadow-glow/50 backdrop-blur-sm': !isDarkMode && timeRange !== 'medium_term'
+      'bg-gray-200 hover:bg-gray-300 text-gray-800 hover:text-gray-900 hover:shadow-glow/50': !isDarkMode && timeRange !== 'medium_term'
     }" 
     class="relative px-5 py-2.5 rounded-full font-semibold text-sm tracking-wide whitespace-nowrap transition-all duration-400 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-teal-400/50 ripple-effect vibrate-effect">
     <span class="relative z-10">6 Months</span>
@@ -24,9 +26,10 @@
   <button 
     (click)="onTimeRangeChange('long_term')" 
     [ngClass]="{
-      'bg-gradient-to-r from-teal-500 to-pink-500 text-white shadow-glow animate-orbit': timeRange === 'long_term',
+      'bg-gradient-to-r from-teal-500 to-pink-500 text-white shadow-glow animate-orbit': timeRange === 'long_term' && isDarkMode,
+      'bg-gradient-to-r from-teal-400 to-pink-400 text-gray-900 shadow-glow animate-orbit': timeRange === 'long_term' && !isDarkMode,
       'bg-gray-800 hover:bg-gray-700 text-gray-200 hover:text-white hover:shadow-glow/50': isDarkMode && timeRange !== 'long_term',
-      'bg-white/10 hover:bg-white/20 text-gray-200 hover:text-white hover:shadow-glow/50 backdrop-blur-sm': !isDarkMode && timeRange !== 'long_term'
+      'bg-gray-200 hover:bg-gray-300 text-gray-800 hover:text-gray-900 hover:shadow-glow/50': !isDarkMode && timeRange !== 'long_term'
     }" 
     class="relative px-5 py-2.5 rounded-full font-semibold text-sm tracking-wide whitespace-nowrap transition-all duration-400 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-teal-400/50 ripple-effect vibrate-effect">
     <span class="relative z-10">All Time</span>
